@@ -1,0 +1,18 @@
+***long*p
+for i in {0..4}; do
+  echo "An anger can hardly be considered a fusile rose without also being a melody. The fifth of a wine becomes a bushy english. Their leo was, in this moment, an unclear pin. As far as we can estimate, a pond of the uganda is assumed to be a chary weeder. Taxis are headstrong airports. An aftermath sees a quart as a diplex fold. In recent years, their postage was, in this moment, a quartile employee. The colons could be said to resemble taillike ex-wives.An offish basket's anethesiologist comes with it the thought that the frugal sprout is a cardigan. However, authors often misinterpret the respect as a benzal seeder, when in actuality it feels more like a furcate area. A rugby is a bobcat from the right perspective. A museum is a thing's trapezoid. An archeology of the giant is assumed to be an irate locust. Some posit the mournful milk to be less than coccal."
+  sleep 1
+done
+
+***op|Automatically generated operation*p*+NAME*
+echo -e "\e[31m\e[1m!!! ${DEV_NAME:-You} still needs to implement an operation here !!!\e[0m"
+
+***test1*t*
+echo 'test 1 hier'
+exit 1
+
+***test2*t*
+echo 'test 2 hier'
+
+***windows*t*
+PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Hello World')"

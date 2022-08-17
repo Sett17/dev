@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="WSL - kali-linux" type="wsl" uuid="608e6947-9463-4aef-b45c-e0c33e5e7095">
+        <config>
+          <option name="distributionMsId" value="kali-linux" />
+          <option name="projectRootOnTarget" value="/mnt/c/Users/sett/AppData/Local/JetBrains/Toolbox/apps/IDEA-U/ch-0/222.3345.118/jbr/bin&#10;/GoDevfile" />
+        </config>
+        <ContributedStateBase type="GoLanguageRuntime">
+          <config>
+            <option name="goPath" value="/home/sett/go" />
+            <option name="goRoot" value="/usr/local/go/bin/go" />
+            <option name="goVersion" value="go1.19 linux/amd64" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
