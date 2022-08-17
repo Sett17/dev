@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"dev/global"
+	"github.com/Sett17/dev/global"
 	"github.com/i582/cfmt/cmd/cfmt"
 	"os"
 )

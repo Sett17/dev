@@ -1,10 +1,10 @@
 package main
 
 import (
-	"dev/cli"
-	"dev/df"
-	"dev/global"
 	"fmt"
+	"github.com/Sett17/dev/cli"
+	"github.com/Sett17/dev/df"
+	"github.com/Sett17/dev/global"
 	"github.com/i582/cfmt/cmd/cfmt"
 	"os"
 )
@@ -19,7 +19,7 @@ func main() {
 	cli.ParseForDebug(os.Args[1:])
 	ops, err := df.Read("devfile")
 	if err != nil {
-		return
+		cli.Error(fmt.Errorf("error reading devfile"), false)
 	}
 	global.Ops = ops
 
@@ -32,7 +32,7 @@ func main() {
 	for _, op := range global.CurrentOps {
 		err := df.Execute(op)
 		if err != nil {
-			cli.Error(fmt.Errorf("%s returned with %s", op.Name, err))
+			cli.Error(fmt.Errorf("%s returned with %s", op.Name, err), true)
 		}
 	}
 }

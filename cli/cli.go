@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"dev/global"
+	"github.com/Sett17/dev/global"
 	"github.com/alexeyco/simpletable"
 	"github.com/i582/cfmt/cmd/cfmt"
 	"strings"
@@ -13,7 +13,7 @@ func Parse(args []string) {
 			split := strings.Split(arg, "+")
 			op, err := global.FindOperation(split[0])
 			if err != nil {
-				Error(err)
+				Error(err, true)
 			}
 			op.SuppliedArgs = split[1:]
 			global.CurrentOps = append(global.CurrentOps, op)

@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"dev/global"
+	"github.com/Sett17/dev/global"
 	"github.com/i582/cfmt/cmd/cfmt"
 	"os"
 	"strings"
@@ -23,9 +23,11 @@ func Info(msg string) {
 	cfmt.Printf("{{%s}}::green\n", msg)
 }
 
-func Error(err error) {
+func Error(err error, exit bool) {
 	cfmt.Printf("{{ERROR:}}::bgRed\n{{%s}}::red\n", err.Error())
-	os.Exit(1)
+	if exit {
+		os.Exit(1)
+	}
 }
 
 func Separator() {

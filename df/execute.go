@@ -1,9 +1,9 @@
 package df
 
 import (
-	"dev/cli"
-	"dev/global"
 	"fmt"
+	"github.com/Sett17/dev/cli"
+	"github.com/Sett17/dev/global"
 	"github.com/i582/cfmt/cmd/cfmt"
 	"log"
 	"os"

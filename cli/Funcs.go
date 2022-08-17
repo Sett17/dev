@@ -1,8 +1,8 @@
 package cli
 
 import (
-	"dev/global"
 	"fmt"
+	"github.com/Sett17/dev/global"
 	"github.com/alexeyco/simpletable"
 	"github.com/i582/cfmt/cmd/cfmt"
 	"os"

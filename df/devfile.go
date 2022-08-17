@@ -2,9 +2,9 @@ package df
 
 import (
 	"bufio"
-	"dev/cli"
-	"dev/global"
 	"fmt"
+	"github.com/Sett17/dev/cli"
+	"github.com/Sett17/dev/global"
 	"os"
 	"strings"
 	"time"
