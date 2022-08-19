@@ -95,6 +95,7 @@ help command.
 	}
 	cfmt.Printf("  {{-%s}}::purple, {{--%s}}::purple\t{{%s}}::gray\n", DebugProgArg.Short, DebugProgArg.Long, DebugProgArg.Help)
 	cfmt.Printf("  {{-%s}}::purple, {{--%s}}::purple\t{{%s}}::gray\n", "h", "help", "Show this help message")
+	cfmt.Printf("  {{-%s}}::purple, {{--%s}}::purple\t{{%s}}::gray\n", VersionProgArg.Short, VersionProgArg.Long, VersionProgArg.Help)
 
 	cfmt.Printf(`
 
