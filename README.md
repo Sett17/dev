@@ -48,6 +48,7 @@
     - [Update](#update)
     - [Build](#build)
   - [Usage](#usage)
+    - [Example](#example)
   - [Contributing](#contributing)
   - [License](#license)
   - [Acknowledgements](#acknowledgements)
@@ -119,6 +120,51 @@ And get the dependencies and build
 To get started, either create a file called `devfile`
 
 And populate it with operations, according to the [REFERENCE.md](REFERENCE.md) section.
+
+### Example
+
+This an example of the Devfile used in the developement of Devfile.
+With this I can update the version and release a new version to GitHub by simply running `dev version+vX.Y.Z release+vX.Y.Z`.
+
+```bash
+***version*t*+VERSION
+if [ -z "$DEV_VERSION" ]; then
+    echo "VERSION not set"
+    exit 1
+fi
+echo "Setting version to $DEV_VERSION"
+echo -e "package global\nconst Version = \"${DEV_VERSION}\"" > global/version.go
+gofmt -w global/version.go
+
+git add global/version.go
+git commit -m "BBumped version to $DEV_VERSION"
+git push
+
+***release*t*+VERSION
+if [ -z "$DEV_VERSION" ]; then
+    echo "VERSION not set"
+    exit 1
+fi
+
+go build .
+cmd.exe /c go build .
+
+LAST_RELEASE=$(curl -s https://api.github.com/repos/sett17/dev/releases | jq -r 'first.tag_name')
+echo "https://github.com/Sett17/dev/compare/${LAST_RELEASE}...${DEV_VERSION}"
+
+gh release create ${DEV_VERSION} -n "https://github.com/Sett17/dev/compare/${LAST_RELEASE}...${DEV_VERSION}" dev dev.exe
+rm dev.exe dev
+
+***update*t*
+rm -v $GOPATH/bin/dev
+go install github.com/Sett17/dev@latest
+echo -e "\e[32mUpdated linux version\e[0m"
+
+cmd.exe /c del /s %userprofile%\\go\\bin\\dev.exe
+cmd.exe /c go install github.com/Sett17/dev@latest
+echo -e "\e[32mUpdated windows version\e[0m"
+
+```
 
 <!-- Contributing -->
 ## Contributing
