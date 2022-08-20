@@ -20,6 +20,7 @@ func Execute(op *global.Operation) error {
 		return fmt.Errorf("too many arguments supplied for operation %s", op.Name)
 	}
 
+	quiet := false
 	for _, opt := range op.Options {
 		if opt == global.PRINT {
 			cli.Info("Script:")
@@ -28,6 +29,8 @@ func Execute(op *global.Operation) error {
 					cfmt.Printf("  {{%d}}::purple %s\n", ln, line)
 				}
 			}
+		} else if opt == global.QUIET {
+			quiet = true
 		}
 	}
 
@@ -87,7 +90,11 @@ func Execute(op *global.Operation) error {
 
 	cli.Dbg(fmt.Sprintf("Executing %s %s %s", executor, extraArg, filePath))
 	cmd := exec.Command(executor, extraArg, filePath)
-	cmd.Stdout = os.Stdout
+	if !quiet {
+		cmd.Stdout = os.Stdout
+	} else {
+		cli.Dbg("Suppressing STDOUT")
+	}
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
 
