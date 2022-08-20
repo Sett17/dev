@@ -27,13 +27,19 @@ gh release create ${DEV_VERSION} -n "https://github.com/Sett17/dev/compare/${LAS
 rm dev.exe dev
 
 ***update*t*
-rm -v $GOPATH/bin/dev
-go install github.com/Sett17/dev@latest
+LAST_RELEASE=$(curl -s https://api.github.com/repos/sett17/dev/releases | jq -r 'first.tag_name')
+echo "Updating to ${LAST_RELEASE}"
+
+rm -vf $GOPATH/bin/dev
+go install github.com/Sett17/dev@${LAST_RELEASE}
 echo -e "\e[32mUpdated linux version\e[0m"
 
 cmd.exe /c del /s %userprofile%\\go\\bin\\dev.exe
-cmd.exe /c go install github.com/Sett17/dev@latest
+cmd.exe /c go install github.com/Sett17/dev@${LAST_RELEASE}
 echo -e "\e[32mUpdated windows version\e[0m"
+
+***latest*
+echo "Last release: $(curl -s https://api.github.com/repos/sett17/dev/releases | jq -r 'first.tag_name')"
 
 ***test|desc*t*p*q*
 echo moin
