@@ -14,7 +14,7 @@ import (
 )
 
 func Execute(op *global.Operation) error {
-	cli.Info(fmt.Sprintf("Executing operation %s with options %v", op.Name, op.Options))
+	cli.Info(cfmt.Sprintf("Executing operation {{%s}}::underline {{with options %v}}::green", op.Name, op.Options))
 
 	if len(op.SuppliedArgs) > len(op.Arguments) {
 		return fmt.Errorf("too many arguments supplied for operation %s", op.Name)
