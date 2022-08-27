@@ -40,7 +40,10 @@ func Read(path string) (ops []global.Operation, err error) {
 			trimmed = strings.TrimLeft(strings.Replace(line, nameDescription, "", 1), "*")
 			split := strings.Split(trimmed, "*")
 			for _, s := range split {
-				global.ParseOption(&bufferOperation, s)
+				warning := global.ParseOption(&bufferOperation, s)
+				if warning != nil {
+					cli.Warning(warning.Error())
+				}
 			}
 		} else {
 			scriptBuffer.WriteString(line)
